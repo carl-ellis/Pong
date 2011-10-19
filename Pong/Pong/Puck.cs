@@ -18,7 +18,7 @@ namespace Pong
         public Rectangle Size;
         private float Scale = 1.0f;
         public Vector2 Position;
-        private Vector2 Velocity;
+        public Vector2 Velocity;
         private Rectangle Arena;
         private bool bouncing = false;
         public float SPEED = 7.0f;
@@ -108,7 +108,7 @@ namespace Pong
         }
          
         /// <summary>
-        /// Flips the X velcocity
+        /// Flips the X velcocity and increases the speed of the puck
         /// </summary>
         public void flipX()
         {
@@ -143,13 +143,19 @@ namespace Pong
             this.AdjustAngle();
         }
 
+        /// <summary>
+        /// Updates the bounding box
+        /// </summary>
         private void updateBBox()
         {
             this.bbox = new BoundingBox(new Vector3(Position, 0), new Vector3(Position + new Vector2(Size.Width, Size.Height), 0));
         }
 
-
-        internal void setAngle(float speed)
+        /// <summary>
+        /// Changes the Y velocity, which essentially adjusts the angle of the puck
+        /// </summary>
+        /// <param name="speed">New speed</param>
+        public void setAngle(float speed)
         {
             this.Velocity.Y = speed;
         }

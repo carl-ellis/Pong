@@ -16,16 +16,38 @@ namespace Pong
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+        // Main game window 
+        const int MAIN_GAME_STATE   = 1;
+        // Screen when game has ended
+        const int END_GAME_STATE    = 2;
+        // Screen for loading a new ball
+        const int NEW_BALL_STATE    = 3;
+        // New game screen, logo and such
+        const int NEW_GAME_STATE    = 4;
+        // Pause game, with restart command
+        const int PAUSE_GAME_STATE  = 5;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Puck p;
         Pad leftPad;
         Pad rightPad;
         Texture2D background;
+        Texture2D overlay;
+        Texture2D winner;
+
+        int ballsLeft;
 
         SpriteFont font;
         Vector2 leftScorePos;
         Vector2 rightScorePos;
+        Vector2 ballsLeftPos;
+        Vector2 winnerPos;
+        Vector2 winnerTextPos;
+
+        // Game states
+        int gamestate;
+
 
 
         public Game1()
@@ -43,13 +65,19 @@ namespace Pong
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            background = Content.Load<Texture2D>("sprites//starfield");
             p = new Puck(Content, new Rectangle(0,0,this.graphics.GraphicsDevice.Viewport.Width, this.graphics.GraphicsDevice.Viewport.Height));
             leftPad = new Pad(Content, new Rectangle(0, 0, this.graphics.GraphicsDevice.Viewport.Width, this.graphics.GraphicsDevice.Viewport.Height), true);
             rightPad = new Pad(Content, new Rectangle(0, 0, this.graphics.GraphicsDevice.Viewport.Width, this.graphics.GraphicsDevice.Viewport.Height), false);
 
             leftScorePos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width / 10, this.graphics.GraphicsDevice.Viewport.Height * 0.02f);
             rightScorePos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width - this.graphics.GraphicsDevice.Viewport.Width / 10, this.graphics.GraphicsDevice.Viewport.Height * 0.02f);
+            ballsLeftPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width/2, this.graphics.GraphicsDevice.Viewport.Height * 0.02f);
+            winnerPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width/2 - 200, this.graphics.GraphicsDevice.Viewport.Height/2 - 100);
+            winnerTextPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width/2, this.graphics.GraphicsDevice.Viewport.Height/2);
+            ballsLeft = 2;
+
+            gamestate = MAIN_GAME_STATE;
+
             base.Initialize();
         }
 
@@ -62,6 +90,9 @@ namespace Pong
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("Lindsey");
+            background = Content.Load<Texture2D>("sprites//starfield");
+            overlay = Content.Load<Texture2D>("sprites//overlay");
+            winner = Content.Load<Texture2D>("sprites//winner");
             
 
             // TODO: use this.Content to load your game content here
@@ -89,27 +120,40 @@ namespace Pong
 
             // TODO: Add your update logic here
 
-            rightPad.checkCollisionAndRebound(p);
-            leftPad.checkCollisionAndRebound(p);
-
-            rightPad.update(Mouse.GetState());
-            leftPad.update(Keyboard.GetState());
-
-            // Check to see if puck has left the arena
-            int check = p.outOfBounds();
-            if (check > 0 )
+            switch(gamestate)
             {
-                // Add score to the puck which won (1 for left edge, right puck scores)
-                if (check == 1)
-                    rightPad.score += 1;
+                case MAIN_GAME_STATE:
+                    rightPad.checkCollisionAndRebound(p);
+                    leftPad.checkCollisionAndRebound(p);
+        
+                    rightPad.update(Mouse.GetState());
+                    leftPad.update(Keyboard.GetState());
+        
+                    // Check to see if puck has left the arena
+                    int check = p.outOfBounds();
+                    if (check > 0 )
+                    {
+                        // Add score to the puck which won (1 for left edge, right puck scores)
+                        if (check == 1)
+                            rightPad.score += Math.Abs((int)p.Velocity.X*10/7);
+        
+                        if (check == 2)
+                            leftPad.score += Math.Abs((int)p.Velocity.X*10/7);
+        
+                        ballsLeft--;
 
-                if (check == 2)
-                    leftPad.score += 1;
-                        
-                p.reset();
+                        if (ballsLeft <= 0)
+                        {
+                            gamestate = END_GAME_STATE;
+                        }
+        
+                        // Enter state for new ball coming to the field
+                        p.reset();
+                    }
+                    // Move things
+                    p.update();
+                    break;
             }
-            // Move things
-            p.update();
 
             base.Update(gameTime);
         }
@@ -125,16 +169,50 @@ namespace Pong
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            spriteBatch.Draw(background, Vector2.Zero, new Rectangle(0,0, background.Width, background.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+            switch (gamestate)
+            {
+                case MAIN_GAME_STATE: 
+                case END_GAME_STATE:
+                    spriteBatch.Draw(background, Vector2.Zero, new Rectangle(0,0, background.Width, background.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+        
+                    // Draw objects
+                    leftPad.draw(spriteBatch);
+                    rightPad.draw(spriteBatch);
+                    p.draw(spriteBatch);
+        
+                    // Draw UI
+                    spriteBatch.DrawString(font, leftPad.score.ToString(), leftScorePos, Color.WhiteSmoke); 
+                    spriteBatch.DrawString(font, rightPad.score.ToString(), rightScorePos, Color.WhiteSmoke); 
+                    spriteBatch.DrawString(font, ballsLeft.ToString(), ballsLeftPos, Color.WhiteSmoke);
 
-            // Draw objects
-            leftPad.draw(spriteBatch);
-            rightPad.draw(spriteBatch);
-            p.draw(spriteBatch);
+                    // if end game state put up the end credits
+                    if (gamestate == END_GAME_STATE)
+                    {
+                        // Winner text
+                        String winnerText = " has WON with ";
+                        if (leftPad.score > rightPad.score)
+                        {
+                            winnerText = "Left " + winnerText + leftPad.score.ToString() + " points!";
+                        }
+                        else if (leftPad.score == rightPad.score)
+                        {
+                            winnerText = "EVERYONE " + winnerText + rightPad.score.ToString() + " points!";
+                        }
+                        else
+                        {
+                            winnerText = "Right " + winnerText + rightPad.score.ToString() + " points!";
+                        }
 
-            // Draw UI
-            spriteBatch.DrawString(font, leftPad.score.ToString(), leftScorePos, Color.WhiteSmoke); 
-            spriteBatch.DrawString(font, rightPad.score.ToString(), rightScorePos, Color.WhiteSmoke); 
+                        //adjust text position based on text length... dodgey I know
+                        winnerTextPos.X = this.graphics.GraphicsDevice.Viewport.Width/2 - (int)(winnerText.Length * 4.4);
+
+                        spriteBatch.Draw(overlay, Vector2.Zero, new Rectangle(0,0, overlay.Width, overlay.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+                        spriteBatch.Draw(winner, winnerPos, new Rectangle(0,0, winner.Width, winner.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+                        spriteBatch.DrawString(font,  winnerText, winnerTextPos, Color.WhiteSmoke);
+                    }
+
+                    break;
+            }
 
             spriteBatch.End();
 

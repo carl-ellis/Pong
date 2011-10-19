@@ -7,7 +7,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Carl\Documents\Visual Studio 2010\Projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\puck.xnb</Output>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\puck.xnb</Output>
       <Time>2011-08-28T22:14:14+01:00</Time>
     </Item>
     <Item>
@@ -16,17 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Carl\Documents\Visual Studio 2010\Projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\pad.xnb</Output>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\pad.xnb</Output>
       <Time>2011-08-29T17:26:14+01:00</Time>
-    </Item>
-    <Item>
-      <Source>Lindsey.spritefont</Source>
-      <Name>Lindsey</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Carl\Documents\Visual Studio 2010\Projects\Pong\Pong\Pong\bin\x86\Debug\Content\Lindsey.xnb</Output>
-      <Time>2011-09-13T22:28:09.4618161+01:00</Time>
     </Item>
     <Item>
       <Source>sprites\starfield.png</Source>
@@ -34,8 +25,35 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Carl\Documents\Visual Studio 2010\Projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\starfield.xnb</Output>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\starfield.xnb</Output>
       <Time>2011-09-18T22:25:03.9264837+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\overlay.png</Source>
+      <Name>sprites\overlay</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\overlay.xnb</Output>
+      <Time>2011-10-19T22:55:31.0014177+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Lindsey.spritefont</Source>
+      <Name>Lindsey</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\Lindsey.xnb</Output>
+      <Time>2011-09-13T22:28:09.4618161+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\winner.png</Source>
+      <Name>sprites\winner</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\winner.xnb</Output>
+      <Time>2011-10-19T23:19:36.4140906+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -43,10 +61,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Carl\Documents\Visual Studio 2010\Projects\Pong\Pong\PongContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Carl\Documents\Visual Studio 2010\Projects\Pong\Pong\Pong\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Carl\Documents\Visual Studio 2010\Projects\Pong\Pong\PongContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Carl\Documents\Visual Studio 2010\Projects\Pong\Pong\Pong\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\PongContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\PongContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
