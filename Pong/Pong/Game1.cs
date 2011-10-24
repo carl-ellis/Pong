@@ -27,6 +27,9 @@ namespace Pong
         // Pause game, with restart command
         const int PAUSE_GAME_STATE  = 5;
 
+        // TIME FOR NEW BALL TO ENTER PLAY
+        const int NEW_BALL_COUNTER = 3000;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Puck p;
@@ -44,9 +47,14 @@ namespace Pong
         Vector2 ballsLeftPos;
         Vector2 winnerPos;
         Vector2 winnerTextPos;
+        Vector2 ballTextPos;
+        Vector2 ballTextLabelPos;
 
         // Game states
         int gamestate;
+
+        // new ball calcs
+        int counter;
 
 
 
@@ -74,6 +82,8 @@ namespace Pong
             ballsLeftPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width/2, this.graphics.GraphicsDevice.Viewport.Height * 0.02f);
             winnerPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width/2 - 200, this.graphics.GraphicsDevice.Viewport.Height/2 - 100);
             winnerTextPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width/2, this.graphics.GraphicsDevice.Viewport.Height/2);
+            ballTextPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width / 2, this.graphics.GraphicsDevice.Viewport.Height / 2 + 10);
+            ballTextLabelPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width / 2, this.graphics.GraphicsDevice.Viewport.Height / 2 - 10);
             ballsLeft = 2;
 
             gamestate = MAIN_GAME_STATE;
@@ -123,6 +133,7 @@ namespace Pong
             switch(gamestate)
             {
                 case MAIN_GAME_STATE:
+                case NEW_BALL_STATE:
                     rightPad.checkCollisionAndRebound(p);
                     leftPad.checkCollisionAndRebound(p);
         
@@ -135,10 +146,10 @@ namespace Pong
                     {
                         // Add score to the puck which won (1 for left edge, right puck scores)
                         if (check == 1)
-                            rightPad.score += Math.Abs((int)p.Velocity.X*10/7);
+                            rightPad.score += Math.Abs((int)p.Velocity.X*10/4);
         
                         if (check == 2)
-                            leftPad.score += Math.Abs((int)p.Velocity.X*10/7);
+                            leftPad.score += Math.Abs((int)p.Velocity.X*10/4);
         
                         ballsLeft--;
 
@@ -146,12 +157,29 @@ namespace Pong
                         {
                             gamestate = END_GAME_STATE;
                         }
-        
-                        // Enter state for new ball coming to the field
-                        p.reset();
+                        else
+                        {
+                            // Enter state for new ball coming to the field
+                            counter = NEW_BALL_COUNTER;
+                            p.reset();
+                            gamestate = NEW_BALL_STATE;
+                        }
                     }
                     // Move things
-                    p.update();
+                    if (gamestate == MAIN_GAME_STATE)
+                    {
+                        p.update();
+                    }
+                    else if (gamestate == NEW_BALL_STATE) 
+                    {
+                        // start the new ball counter
+                        counter -= gameTime.ElapsedGameTime.Milliseconds;
+                        if (counter <= 0)
+                        {
+                            gamestate = MAIN_GAME_STATE;
+                        }
+                     
+                    }
                     break;
             }
 
@@ -173,12 +201,14 @@ namespace Pong
             {
                 case MAIN_GAME_STATE: 
                 case END_GAME_STATE:
+                case NEW_BALL_STATE:
                     spriteBatch.Draw(background, Vector2.Zero, new Rectangle(0,0, background.Width, background.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
         
                     // Draw objects
                     leftPad.draw(spriteBatch);
                     rightPad.draw(spriteBatch);
-                    p.draw(spriteBatch);
+                    if (gamestate == MAIN_GAME_STATE)
+                        p.draw(spriteBatch);
         
                     // Draw UI
                     spriteBatch.DrawString(font, leftPad.score.ToString(), leftScorePos, Color.WhiteSmoke); 
@@ -209,6 +239,20 @@ namespace Pong
                         spriteBatch.Draw(overlay, Vector2.Zero, new Rectangle(0,0, overlay.Width, overlay.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
                         spriteBatch.Draw(winner, winnerPos, new Rectangle(0,0, winner.Width, winner.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
                         spriteBatch.DrawString(font,  winnerText, winnerTextPos, Color.WhiteSmoke);
+                    }
+                    // if new ball, show counter
+                    else if (gamestate == NEW_BALL_STATE)
+                    {
+                        // Ball text
+                        String ballText = Math.Floor(((double)counter)/1000).ToString();
+                        String ballLabelText = "NEW BALL IN:";
+
+                        //adjust text position based on text length... dodgey I know
+                        ballTextLabelPos.X = this.graphics.GraphicsDevice.Viewport.Width / 2 - (int)(ballLabelText.Length * 4.4);
+
+                        spriteBatch.Draw(overlay, Vector2.Zero, new Rectangle(0,0, overlay.Width, overlay.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
+                        spriteBatch.DrawString(font, ballLabelText, ballTextLabelPos, Color.WhiteSmoke);
+                        spriteBatch.DrawString(font, ballText, ballTextPos, Color.WhiteSmoke);
                     }
 
                     break;

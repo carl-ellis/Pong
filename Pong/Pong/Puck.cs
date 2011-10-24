@@ -21,7 +21,7 @@ namespace Pong
         public Vector2 Velocity;
         private Rectangle Arena;
         private bool bouncing = false;
-        public float SPEED = 7.0f;
+        public float SPEED = 4.0f;
         public BoundingBox bbox;
 
         /// <summary>

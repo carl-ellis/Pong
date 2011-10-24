@@ -28,3 +28,15 @@ C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\obj\x86\
 C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\obj\x86\Debug\Pong.exe
 C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\obj\x86\Debug\Pong.pdb
 C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\winner.xnb
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\puck.xnb
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\pad.xnb
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\starfield.xnb
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\overlay.xnb
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\winner.xnb
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\Lindsey.xnb
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Pong.exe
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Pong.pdb
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\obj\x86\Debug\Pong.exe
+C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\obj\x86\Debug\Pong.pdb
