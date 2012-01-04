@@ -3,4 +3,5 @@ Content\sprites\pad.xnb
 Content\sprites\starfield.xnb
 Content\sprites\overlay.xnb
 Content\sprites\winner.xnb
+Content\sprites\trail.xnb
 Content\Lindsey.xnb

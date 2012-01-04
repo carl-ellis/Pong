@@ -39,6 +39,11 @@ namespace Pong
         Texture2D overlay;
         Texture2D winner;
 
+        Trail[] trails;
+        int NUM_TRAILS = 50;
+        int current_trails = 0;
+        int MAX_TICKS = 5000;
+
         int ballsLeft;
 
         SpriteFont font;
@@ -87,6 +92,7 @@ namespace Pong
             ballsLeft = 2;
 
             gamestate = MAIN_GAME_STATE;
+            trails = new Trail[NUM_TRAILS];
 
             base.Initialize();
         }
@@ -163,12 +169,29 @@ namespace Pong
                             counter = NEW_BALL_COUNTER;
                             p.reset();
                             gamestate = NEW_BALL_STATE;
+                            current_trails = 0;
+                            trails = new Trail[NUM_TRAILS];
                         }
                     }
                     // Move things
                     if (gamestate == MAIN_GAME_STATE)
                     {
                         p.update();
+                        if (current_trails < NUM_TRAILS)
+                        {
+                            trails[current_trails++] = new Trail(Content, p);
+                        }
+                        for (int i = 0; i < current_trails; i++)
+                        {
+                            if (trails[i].ticks > MAX_TICKS)
+                            {
+                                trails[i] = new Trail(Content, p);
+                            }
+                            else
+                            {
+                                trails[i].update();
+                            }
+                        }
                     }
                     else if (gamestate == NEW_BALL_STATE) 
                     {
@@ -208,7 +231,13 @@ namespace Pong
                     leftPad.draw(spriteBatch);
                     rightPad.draw(spriteBatch);
                     if (gamestate == MAIN_GAME_STATE)
+                    {
                         p.draw(spriteBatch);
+                        for (int i = 0; i < current_trails; i++)
+                        {
+                            trails[i].draw(spriteBatch);
+                        }
+                    }
         
                     // Draw UI
                     spriteBatch.DrawString(font, leftPad.score.ToString(), leftScorePos, Color.WhiteSmoke); 

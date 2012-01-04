@@ -7,8 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\puck.xnb</Output>
-      <Time>2011-10-12T10:01:52.6708065+01:00</Time>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\puck.xnb</Output>
+      <Time>2011-08-28T22:14:14+01:00</Time>
     </Item>
     <Item>
       <Source>sprites\pad.bmp</Source>
@@ -16,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\pad.xnb</Output>
-      <Time>2011-10-12T10:01:52.6928078+01:00</Time>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\pad.xnb</Output>
+      <Time>2011-08-29T17:26:14+01:00</Time>
     </Item>
     <Item>
       <Source>sprites\starfield.png</Source>
@@ -25,8 +25,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\starfield.xnb</Output>
-      <Time>2011-10-12T10:01:52.6738067+01:00</Time>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\starfield.xnb</Output>
+      <Time>2011-09-18T22:25:03.9264837+01:00</Time>
     </Item>
     <Item>
       <Source>sprites\overlay.png</Source>
@@ -34,8 +34,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\overlay.xnb</Output>
-      <Time>2011-10-20T11:22:38.4272968+01:00</Time>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\overlay.xnb</Output>
+      <Time>2011-10-19T22:55:31.0014177+01:00</Time>
     </Item>
     <Item>
       <Source>sprites\winner.png</Source>
@@ -43,8 +43,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\winner.xnb</Output>
-      <Time>2011-10-20T11:22:38.448298+01:00</Time>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\winner.xnb</Output>
+      <Time>2011-10-19T23:19:36.4140906+01:00</Time>
+    </Item>
+    <Item>
+      <Source>sprites\trail.bmp</Source>
+      <Name>sprites\trail</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\trail.xnb</Output>
+      <Time>2011-11-07T14:50:55.2937506+00:00</Time>
     </Item>
     <Item>
       <Source>Lindsey.spritefont</Source>
@@ -52,8 +61,8 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\Lindsey.xnb</Output>
-      <Time>2011-10-12T10:01:52.8518169+01:00</Time>
+      <Output>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\Lindsey.xnb</Output>
+      <Time>2011-09-13T22:28:09.4618161+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -61,39 +70,39 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\PongContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\PongContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\PongContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\PongContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T12:41:18+01:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T12:41:18+01:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T12:41:18+01:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T12:41:18+01:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T12:41:18+01:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-23T13:41:18+01:00</Value>
+        <Value>2010-08-23T12:41:18+01:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2011-01-14T16:02:59.6307135+00:00</Value>
+        <Value>2011-09-05T23:41:19.0848495+01:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

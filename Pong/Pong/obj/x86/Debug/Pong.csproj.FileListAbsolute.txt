@@ -40,3 +40,4 @@ C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\obj\x
 C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\obj\x86\Debug\Pong.exe
 C:\Users\Carl\Documents\svn\personal\visual studio projects\Pong\Pong\Pong\obj\x86\Debug\Pong.pdb
+C:\Users\Carl\Documents\Checkouts\visual studio projects\Pong\Pong\Pong\bin\x86\Debug\Content\sprites\trail.xnb
