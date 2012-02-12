@@ -16,10 +16,8 @@ namespace Pong
     {
         private Texture2D Texture;
         public Vector2 Position;
-        public Vector2 Velocity;
-        public Vector2 Acc;
         public int ticks = 0;
-        private float SPEED = 4.0f;
+        private float drop = 1.2f;
         private Puck p;
 
         /// <summary>
@@ -29,15 +27,10 @@ namespace Pong
         /// <param name="p">Puck to follow</param>
         public Trail(ContentManager content, Puck p)
         {
-            this.Texture = content.Load<Texture2D>("sprites\\trail");
+            this.Texture = content.Load<Texture2D>("sprites\\puck");
             this.p = p;
-            this.Position = p.Position - p.Velocity;
-            this.Position.X += (float)new Random().NextDouble() * p.Size.Width;
-            this.Position.Y += (float)new Random().NextDouble() * p.Size.Height;
-            this.Velocity = p.Velocity;
-            this.Velocity.X += (float)new Random().NextDouble();
-            this.Velocity.Y += (float)new Random().NextDouble();
-            //this.Velocity *= this.p.Velocity;
+            this.drop = (float)(new Random().NextDouble()) * 0.4f + 0.8f; 
+            this.Position = p.Position;
         }
 
         /// <summary>
@@ -45,18 +38,7 @@ namespace Pong
         /// </summary>
         public void update()
         {
-            //float vY = this.Position.Y - this.p.Position.Y - (float)new Random().NextDouble() * 2 - 1;
-            //float vX = this.Position.X - this.p.Position.X - (float)new Random().NextDouble() * 2 - 1; 
-            //this.Velocity = new Vector2(vX, vY) * this.SPEED;
-
-            this.Acc = (this.p.Position - this.Position);
-            this.Acc.Normalize();
-            this.Acc *= 0.5f;
-            this.Velocity += this.Acc;
-            this.Velocity.Normalize();
-            this.Velocity *= SPEED;
-
-            this.Position += this.Velocity;
+            this.Position = this.p.Position - (this.p.Velocity * drop);
 
             this.ticks++;
         }

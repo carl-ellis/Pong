@@ -30,6 +30,9 @@ namespace Pong
         // TIME FOR NEW BALL TO ENTER PLAY
         const int NEW_BALL_COUNTER = 3000;
 
+        // STARTING BALLS
+        const int BALLS_START = 5;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Puck p;
@@ -40,9 +43,9 @@ namespace Pong
         Texture2D winner;
 
         Trail[] trails;
-        int NUM_TRAILS = 50;
+        int NUM_TRAILS = 10;
         int current_trails = 0;
-        int MAX_TICKS = 5000;
+        int MAX_TICKS = 50;
 
         int ballsLeft;
 
@@ -54,6 +57,7 @@ namespace Pong
         Vector2 winnerTextPos;
         Vector2 ballTextPos;
         Vector2 ballTextLabelPos;
+        Vector2 nextgameTextLabelPos;
 
         // Game states
         int gamestate;
@@ -89,7 +93,8 @@ namespace Pong
             winnerTextPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width/2, this.graphics.GraphicsDevice.Viewport.Height/2);
             ballTextPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width / 2, this.graphics.GraphicsDevice.Viewport.Height / 2 + 10);
             ballTextLabelPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width / 2, this.graphics.GraphicsDevice.Viewport.Height / 2 - 10);
-            ballsLeft = 2;
+            nextgameTextLabelPos = new Vector2(this.graphics.GraphicsDevice.Viewport.Width / 2, this.graphics.GraphicsDevice.Viewport.Height / 2 + 70);
+            ballsLeft = BALLS_START;
 
             gamestate = MAIN_GAME_STATE;
             trails = new Trail[NUM_TRAILS];
@@ -204,6 +209,18 @@ namespace Pong
                      
                     }
                     break;
+                case END_GAME_STATE:
+                    if (Keyboard.GetState().GetPressedKeys().Length > 0)
+                    {
+                        gamestate = NEW_GAME_STATE;
+                        ballsLeft = BALLS_START;
+                        counter = NEW_BALL_COUNTER;
+                        p.reset();
+                        gamestate = NEW_BALL_STATE;
+                        current_trails = 0;
+                        trails = new Trail[NUM_TRAILS];
+                    }
+                    break;
             }
 
             base.Update(gameTime);
@@ -249,6 +266,7 @@ namespace Pong
                     {
                         // Winner text
                         String winnerText = " has WON with ";
+                        String nextGameText = "Press ANY key to play again";
                         if (leftPad.score > rightPad.score)
                         {
                             winnerText = "Left " + winnerText + leftPad.score.ToString() + " points!";
@@ -263,11 +281,14 @@ namespace Pong
                         }
 
                         //adjust text position based on text length... dodgey I know
-                        winnerTextPos.X = this.graphics.GraphicsDevice.Viewport.Width/2 - (int)(winnerText.Length * 4.4);
+                        //winnerTextPos.X = this.graphics.GraphicsDevice.Viewport.Width/2 - (int)(winnerText.Length * 4.4);
+                        winnerTextPos.X = this.graphics.GraphicsDevice.Viewport.Width/2 - font.MeasureString(winnerText).X/2;
+                        nextgameTextLabelPos.X = this.graphics.GraphicsDevice.Viewport.Width/2 - (font.MeasureString(nextGameText).X*1.5f)/2;
 
                         spriteBatch.Draw(overlay, Vector2.Zero, new Rectangle(0,0, overlay.Width, overlay.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
                         spriteBatch.Draw(winner, winnerPos, new Rectangle(0,0, winner.Width, winner.Height), Color.White, 0.0f, Vector2.Zero, 1.0f, SpriteEffects.None, 0);
                         spriteBatch.DrawString(font,  winnerText, winnerTextPos, Color.WhiteSmoke);
+                        spriteBatch.DrawString(font,  nextGameText, nextgameTextLabelPos, Color.WhiteSmoke, 0.0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0.0f);
                     }
                     // if new ball, show counter
                     else if (gamestate == NEW_BALL_STATE)
